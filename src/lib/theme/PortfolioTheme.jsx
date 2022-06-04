@@ -3,8 +3,8 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 const palette = {
   primary: {
-    main: "#f56e27",
-    light: "#FD8E53",
+    main: "#F5F5F5",
+    light: "#F5F5F5",
     dark: "#E8621B",
   },
   destroy: {
@@ -53,7 +53,11 @@ export const PORTFOLIO_THEME = createTheme({
   palette: palette,
 
   typography: {
-    fontFamily: ["'Source Sans Pro'"],
+    "fontFamily": `"Roboto", "Helvetica", "Arial", sans-serif`,
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500,
     h4: {
       color: palette.header.main,
       lineHeight: "20px",
