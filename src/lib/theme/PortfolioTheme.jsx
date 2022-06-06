@@ -53,11 +53,7 @@ export const PORTFOLIO_THEME = createTheme({
   palette: palette,
 
   typography: {
-    "fontFamily": `"Roboto", "Helvetica", "Arial", sans-serif`,
-    "fontSize": 14,
-    "fontWeightLight": 300,
-    "fontWeightRegular": 400,
-    "fontWeightMedium": 500,
+    "fontFamily": ['"Montserrat"', 'Open Sans'].join(','),
     h4: {
       color: palette.header.main,
       lineHeight: "20px",
