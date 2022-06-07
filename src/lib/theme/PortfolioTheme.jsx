@@ -106,20 +106,6 @@ export const PORTFOLIO_THEME = createTheme({
       marginBottom: "5px",
       paddingBottom: "2px",
     },
-    signIn: {
-      color: "#123068!important",
-      textDecoration: "none!important",
-    },
-    errorDiv: {
-      color: palette.destroy.main,
-      fontSize: "15px",
-      fontWeight: "500",
-      link: {
-        color: palette.link_completedTasks.light,
-        fontWeight: 800,
-        cursor: "pointer",
-      },
-    },
   },
 
   components: {
