@@ -53,11 +53,7 @@ export const PORTFOLIO_THEME = createTheme({
   palette: palette,
 
   typography: {
-    "fontFamily": `"Roboto", "Helvetica", "Arial", sans-serif`,
-    "fontSize": 14,
-    "fontWeightLight": 300,
-    "fontWeightRegular": 400,
-    "fontWeightMedium": 500,
+    "fontFamily": ['"Montserrat"', 'Open Sans'].join(','),
     h4: {
       color: palette.header.main,
       lineHeight: "20px",
@@ -109,20 +105,6 @@ export const PORTFOLIO_THEME = createTheme({
       lineHeight: "normal",
       marginBottom: "5px",
       paddingBottom: "2px",
-    },
-    signIn: {
-      color: "#123068!important",
-      textDecoration: "none!important",
-    },
-    errorDiv: {
-      color: palette.destroy.main,
-      fontSize: "15px",
-      fontWeight: "500",
-      link: {
-        color: palette.link_completedTasks.light,
-        fontWeight: 800,
-        cursor: "pointer",
-      },
     },
   },
 
