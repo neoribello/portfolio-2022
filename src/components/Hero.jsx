@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import useAxios from '../lib/data';
 
 import { Grid, Box, Typography } from '@mui/material';
@@ -31,6 +30,9 @@ function Hero() {
             <Typography variant="h2">
               {data.heroHeadline}
             </Typography>
+          </Box>
+          <Box>
+
           </Box>
           <Box>
             
