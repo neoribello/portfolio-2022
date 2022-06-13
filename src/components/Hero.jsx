@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import useAxios from '../lib/data';
+import React from 'react';
 
-import { Grid, Box, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+
+import Image from 'material-ui-image'
+import heroImg from '../lib/img/heroImg.jpg';
 
 
-function Hero() {
-  const [data, setData] = useState([]);
-  const [todo, isError, isLoading] = useAxios({
-    url: 'heroes?populate=heroImg',
-    method: 'get',
-  });
-  useEffect(() => {
-    if(todo && todo.data) setData(todo.data.data[0].attributes)
- }, [todo]);
- console.log(data)
- 
+function Hero(props) {
   return (
     <>  
-    {isLoading ? (
+    {props.isLoading ? (
       <p>isLoading...</p>
       ) : (
         <div>
-          {isError && <p>{isError.message}</p>}
-          <Grid>
-            <Box>
+          {props.isError && <p>{props.isError.message}</p>}
+          <Grid container>
+            <Grid item>
               <Typography variant="h1">
-                {data.heroName}
+                {props.heroData.heroName}
               </Typography>
               <Typography variant="h2">
-                {data.heroHeadline}
+                {props.heroData.heroHeadline}
               </Typography>
-            </Box>
-            <Box
-            
-            >
-              
-            </Box>
+            </Grid>
+            <Grid item>
+              <Image
+                src={heroImg}
+              />
+            </Grid>
           </Grid>
         </div>
       )} 
