@@ -1,42 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import useAxios from '../lib/data';
+import React from 'react';
+import { Grid, Typography } from '@mui/material';
+import { makeStyles } from "@material-ui/styles"
 
-import { Grid, Box, Typography } from '@mui/material';
+import heroImg from '../lib/img/heroImg.jpg';
+import CircularLoader from '../lib/components/CircularLoader';
 
+const useStyles = makeStyles({
+  gridContainer: {
+    width: '100%',
+    maxWidth: '1280px',
+    alignItems: 'center'
+  },
+  heroImg: {
+    width: '80%',
+    height: '100%'
+  },
+  heroIntro:  {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    gap: '20px'
+  }
+});
 
-function Hero() {
-  const [data, setData] = useState([]);
-  const [todo, isError, isLoading] = useAxios({
-    url: 'heroes',
-    method: 'get',
-  });
-  useEffect(() => {
-    if(todo && todo.data) setData(todo.data.data[0].attributes)
- }, [todo]);
-
-
+function Hero(props) {
+  const classes = useStyles();
+  console.log(props)
   return (
     <>  
-    {isLoading ? (
-      <p>isLoading...</p>
+    {props.isLoading ? (
+      <p><CircularLoader/></p>
       ) : (
-        <div>
-          {isError && <p>{isError.message}</p>}
-          <Grid>
-          <Box>
-            <Typography variant="h1">
-              {data.heroName}
-            </Typography>
-            <Typography variant="h2">
-              {data.heroHeadline}
-            </Typography>
-          </Box>
-          <Box>
-            
-          </Box>
+        <>
+          {props.isError && <p>{props.isError.message}</p>}
+          <Grid container spacing={10} className={classes.gridContainer}>
+            <Grid 
+              item xs={12} sm={12} md={6} lg={6}
+              className={classes.heroIntro}
+            >
+              <img src={heroImg} alt="hero" className={classes.heroImg}/>
             </Grid>
-        </div>
+            <Grid 
+              item xs={12} sm={12} md={6} lg={6} 
+              className={classes.heroIntro}
+              flexDirection="column"
+            >
+              <Typography variant="h1">
+                {props.heroData.heroName}
+              </Typography>
+              <Typography variant="h2">
+                {props.heroData.heroHeadline}
+              </Typography>
+            </Grid>
+          </Grid>
+        </>
       )} 
     </>
   );
