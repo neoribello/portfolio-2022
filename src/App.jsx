@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 // import useAxios from './lib/data';
+
+import { Box } from '@mui/material';
+import { makeStyles } from "@material-ui/styles"
+
 import PortfolioTheme from './lib/theme/PortfolioTheme';
 import axios from 'axios';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 
+const useStyles = makeStyles({
+  boxContainer: {
+    width: '100%',
+    maxWidth: '1280px',
+    margin: '75px auto'
+  }
+});
 
 function App() {
   const [heroData, setHeroData] = useState([]);
@@ -30,16 +41,19 @@ function App() {
     }
     fetchData();
   }, []);
-  
+
+  const classes = useStyles();
   return (
     <>
     <PortfolioTheme>
       <Navbar/>
-      <Hero
-        heroData={heroData}
-        isError={err}
-        isLoading={loading}
-      />
+      <Box className={classes.boxContainer}>
+        <Hero
+          heroData={heroData}
+          isError={err}
+          isLoading={loading}
+        />
+      </Box>
     </PortfolioTheme>
     </>
   );
