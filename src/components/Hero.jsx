@@ -3,19 +3,24 @@ import { Grid, Typography } from '@mui/material';
 import { makeStyles } from "@material-ui/styles"
 
 import heroImg from '../lib/img/heroImg.jpg';
+import CircularLoader from '../lib/components/CircularLoader';
 
 const useStyles = makeStyles({
   gridContainer: {
     width: '100%',
-    maxWidth: '1280px'
+    maxWidth: '1280px',
+    alignItems: 'center'
   },
   heroImg: {
-    width: '100%'
+    width: '80%',
+    height: '100%'
   },
   heroIntro:  {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    height: '100%',
+    gap: '20px'
   }
 });
 
@@ -25,11 +30,17 @@ function Hero(props) {
   return (
     <>  
     {props.isLoading ? (
-      <p>isLoading...</p>
+      <p><CircularLoader/></p>
       ) : (
         <>
           {props.isError && <p>{props.isError.message}</p>}
-          <Grid container spacing={2} className={classes.gridContainer}>
+          <Grid container spacing={10} className={classes.gridContainer}>
+            <Grid 
+              item xs={12} sm={12} md={6} lg={6}
+              className={classes.heroIntro}
+            >
+              <img src={heroImg} alt="hero" className={classes.heroImg}/>
+            </Grid>
             <Grid 
               item xs={12} sm={12} md={6} lg={6} 
               className={classes.heroIntro}
@@ -41,9 +52,6 @@ function Hero(props) {
               <Typography variant="h2">
                 {props.heroData.heroHeadline}
               </Typography>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-            <img src={heroImg} alt="hero" className={classes.heroImg}/>
             </Grid>
           </Grid>
         </>

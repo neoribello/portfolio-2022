@@ -33,7 +33,7 @@ const palette = {
     main: "#F2F6F9",
   },
   header: {
-    main: "#123068",
+    main: "#000000",
   },
   body: {
     main: "#535E72",
@@ -54,6 +54,17 @@ export const PORTFOLIO_THEME = createTheme({
 
   typography: {
     "fontFamily": ['"Montserrat"', 'Open Sans'].join(','),
+    h1: {
+      color: palette.header.main,
+      fontSize: "48px",
+      fontWeight: "800"
+    },
+
+    h2: {
+      color: palette.header.main,
+      fontSize: "32px"
+    },
+
     h4: {
       color: palette.header.main,
       lineHeight: "20px",
@@ -277,11 +288,6 @@ export const PORTFOLIO_THEME = createTheme({
       },
     },
     MuiTypography: {
-      styleOverrides: {
-        root: {
-          fontSize: "15px", //needed because of bootstrap conflict
-        },
-      },
       defaultProps: {
         variantMapping: {
           errorDiv: "div",
