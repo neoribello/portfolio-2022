@@ -65,6 +65,12 @@ export const PORTFOLIO_THEME = createTheme({
       fontSize: "32px"
     },
 
+    h3: {
+      color: palette.header.main,
+      fontSize: "28px",
+      textTransform: "uppercase"
+    },
+
     h4: {
       color: palette.header.main,
       lineHeight: "20px",
@@ -82,6 +88,12 @@ export const PORTFOLIO_THEME = createTheme({
       fontWeight: "600",
       fontSize: "20px !important",
     },
+
+    paragraph: {
+      color: palette.header.main,
+      fontSize: "16px"
+    },
+
     light: {
       color: palette.header.main,
       fontWeight: "100",

@@ -8,11 +8,10 @@ import CircularLoader from '../lib/components/CircularLoader';
 const useStyles = makeStyles({
   gridContainer: {
     width: '100%',
-    maxWidth: '1280px',
     alignItems: 'center'
   },
   heroImg: {
-    width: '80%',
+    width: '100%',
     height: '100%'
   },
   heroIntro:  {
@@ -26,11 +25,12 @@ const useStyles = makeStyles({
 
 function Hero(props) {
   const classes = useStyles();
-  console.log(props)
   return (
     <>  
     {props.isLoading ? (
-      <p><CircularLoader/></p>
+      <>
+        <CircularLoader/>
+      </>
       ) : (
         <>
           {props.isError && <p>{props.isError.message}</p>}

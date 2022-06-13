@@ -6,30 +6,38 @@ import { makeStyles } from "@material-ui/styles"
 
 import PortfolioTheme from './lib/theme/PortfolioTheme';
 import axios from 'axios';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Introduction from './components/Introduction'
 
 const useStyles = makeStyles({
   boxContainer: {
     width: '100%',
-    maxWidth: '1280px',
+    maxWidth: '1024px',
     margin: '75px auto'
   }
 });
 
 function App() {
   const [heroData, setHeroData] = useState([]);
+  const [introductionData, setIntroductionData] = useState([])
   const [err, setErr] = useState('');
   const [loading, setLoading] = useState(true);
  
   useEffect(() => {
     const fetchData = () => {
-      const heroUrl = 'http://localhost:1338/api/heroes?populate=*'
+      const heroUrl = 'http://localhost:1338/api/heroes'
+      const introductionUrl = 'http://localhost:1338/api/introductions'
+
       const getHero = axios.get(heroUrl)
-      axios.all([getHero])
+      const getIntroduction = axios.get(introductionUrl)
+
+      axios.all([getHero, getIntroduction])
         .then(
           axios.spread((...allData) => {
             setHeroData(allData[0].data.data[0].attributes)
+            setIntroductionData(allData[1].data.data[0].attributes)
           })
         )
         .catch(err => {
@@ -50,6 +58,11 @@ function App() {
       <Box className={classes.boxContainer}>
         <Hero
           heroData={heroData}
+          isError={err}
+          isLoading={loading}
+        />
+        <Introduction
+          introductionData={introductionData}
           isError={err}
           isLoading={loading}
         />
