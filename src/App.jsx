@@ -76,7 +76,6 @@ function App() {
           isError={err}
           isLoading={loading}
         />
-
       </Box>
     </PortfolioTheme>
     </>
