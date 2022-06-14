@@ -68,7 +68,8 @@ export const PORTFOLIO_THEME = createTheme({
     h3: {
       color: palette.header.main,
       fontSize: "28px",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
+      fontWeight: "800"
     },
 
     h4: {
