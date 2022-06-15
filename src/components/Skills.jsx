@@ -7,10 +7,10 @@ import GreyContainer from '../lib/components/GreyContainer';
 
 const useStyles = makeStyles({
   gridContainer: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginTop: '100px',
     gap: '10px',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   gridItem: {
     display: 'flex',
