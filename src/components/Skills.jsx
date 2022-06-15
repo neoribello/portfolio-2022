@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, ImageList, ImageListItem } from '@mui/material';
 import { makeStyles } from "@material-ui/styles"
 
 import CircularLoader from '../lib/components/CircularLoader';
@@ -17,11 +17,18 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
+    textAlign: 'center'
+  },
+  logoItem: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '20px'
   }
 });
 
 function Skills(props) {
-	console.log(props.skillsetData[0].attributes)
+	// console.log(props.skillsetData[0].attributes.skillsetLogos.data)
   const classes = useStyles();
 	return (
 		<>
@@ -36,19 +43,49 @@ function Skills(props) {
               <Grid 
                 item xs={12} sm={12} md={5.5} lg={5.5}
               >
-                <GreyContainer className={classes.gridItem}>
+                <GreyContainer>
                   <Typography variant="h3">
                     {props.skillsetData[0].attributes.skillsetTitle}
                   </Typography>
+                    <ImageList cols={3} >
+                      {props.skillsetData[0].attributes.skillsetLogos.data.map((item) => (
+                        <ImageListItem
+                          className={classes.logoItem}
+                        >
+                          <img 
+                            src={`http://localhost:1338${item.attributes.url}?w=50&h=50&fit=crop&auto=format`}
+                            srcSet={`http://localhost:1338${item.attributes.url}`}
+                            alt={item.attributes.name}
+                            loading="lazy"
+                            style={{height: '75px', width: '75px'}}
+                          />
+                        </ImageListItem>
+                      ))}
+                    </ImageList>
                 </GreyContainer>
               </Grid>
               <Grid 
                 item xs={12} sm={12} md={5.5} lg={5.5}
               >
-                <GreyContainer className={classes.gridItem}>
+                <GreyContainer>
                   <Typography variant="h3">
                     {props.skillsetData[1].attributes.skillsetTitle}
                   </Typography>
+                  <ImageList cols={3} >
+                      {props.skillsetData[1].attributes.skillsetLogos.data.map((item) => (
+                        <ImageListItem
+                          className={classes.logoItem}
+                        >
+                          <img 
+                            src={`http://localhost:1338${item.attributes.url}?w=50&h=50&fit=crop&auto=format`}
+                            srcSet={`http://localhost:1338${item.attributes.url}`}
+                            alt={item.attributes.name}
+                            loading="lazy"
+                            style={{height: '75px', width: '75px'}}
+                          />
+                        </ImageListItem>
+                      ))}
+                    </ImageList>
                 </GreyContainer>
               </Grid>
             </Grid>
