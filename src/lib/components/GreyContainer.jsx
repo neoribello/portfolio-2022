@@ -13,6 +13,9 @@ const sx = {
   "&:hover": {
     boxShadow: "11px 12px 0px 0px #B9DBF6",
   },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
 };
 const GreyContainer = (props) => {
   return (
