@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 });
 
 function Skills(props) {
-	// console.log(props.skillsetData[0].attributes.skillsetLogos.data)
   const classes = useStyles();
 	return (
 		<>
@@ -48,9 +47,10 @@ function Skills(props) {
                     {props.skillsetData[0].attributes.skillsetTitle}
                   </Typography>
                     <ImageList cols={3} >
-                      {props.skillsetData[0].attributes.skillsetLogos.data.map((item) => (
+                      {props.skillsetData[0].attributes.skillsetLogos.data.map((item, index) => (
                         <ImageListItem
                           className={classes.logoItem}
+                          key={index}
                         >
                           <img 
                             src={`http://localhost:1338${item.attributes.url}?w=50&h=50&fit=crop&auto=format`}
@@ -72,9 +72,10 @@ function Skills(props) {
                     {props.skillsetData[1].attributes.skillsetTitle}
                   </Typography>
                   <ImageList cols={3} >
-                      {props.skillsetData[1].attributes.skillsetLogos.data.map((item) => (
+                      {props.skillsetData[1].attributes.skillsetLogos.data.map((item, index) => (
                         <ImageListItem
                           className={classes.logoItem}
+                          key={index}
                         >
                           <img 
                             src={`http://localhost:1338${item.attributes.url}?w=50&h=50&fit=crop&auto=format`}
