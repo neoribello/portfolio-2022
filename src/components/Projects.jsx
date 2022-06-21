@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Typography, ImageList, ImageListItem } from '@mui/material';
+import { Grid, Typography, CardMedia, CardContent, Card, CardActionArea } from '@mui/material';
 import { makeStyles } from "@material-ui/styles"
+import parse from 'html-react-parser';
 
 import CircularLoader from '../lib/components/CircularLoader';
 import GreyContainer from '../lib/components/GreyContainer';
@@ -22,6 +23,16 @@ const useStyles = makeStyles({
 		display: 'flex',
 		justifyContent: 'center',
 		padding: '0 0 60px'
+	},
+	gridItems: {
+		display: 'flex',
+		flexDirection: 'row',
+		gap: '50px'
+	},
+	projectImage: {
+		maxWidth: '100%',
+		maxHeight: '100%',
+		objectPosition: 'top'
 	}
 });
 
@@ -37,26 +48,35 @@ const Projects = (props) => {
 					Personal Projects
 				</Typography>
 				</Grid>
-				<Grid 
-					item xs={12} sm={12} md={3.5} lg={3.5}
+				<Grid
+					className={classes.gridItems}
+					
+					container
 				>
-					<GreyContainer>
-
-					</GreyContainer>
-				</Grid>
-				<Grid 
-					item xs={12} sm={12} md={3.5} lg={3.5}
-				>
-					<GreyContainer>
-						
-					</GreyContainer>
-				</Grid>
-				<Grid 
-					item xs={12} sm={12} md={4} lg={4}
-				>
-					<GreyContainer>
-						
-					</GreyContainer>
+					{props.projectData.map((item, index) => (
+						<Grid item xs={12} sm={12} md={5.5} lg={5.5}>
+							<GreyContainer key={index}>
+								<CardMedia
+									component="img"
+									height="200"
+									image={`http://localhost:1338${item.attributes.projectImg.data.attributes.url}`}
+									alt={item.attributes.projectTitle}
+									className={classes.projectImage}
+								/>
+								<CardContent>
+									<Typography gutterBottom variant="h5" component="div">
+										{item.attributes.projectTitle}
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										{item.attributes.projectDescription}
+									</Typography>
+									<Typography component={'span'} variant={'body2'}>
+										{parse(item.attributes.projectTags)}
+									</Typography>
+								</CardContent>
+							</GreyContainer>
+						</Grid>
+					))}
 				</Grid>
       </Grid>
 		</>
