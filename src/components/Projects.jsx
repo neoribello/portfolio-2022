@@ -1,9 +1,9 @@
 import React from 'react';
-import { Grid, Typography, CardMedia, CardContent, Card, CardActionArea } from '@mui/material';
+import { Grid, Typography, CardMedia, CardContent, Link } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { makeStyles } from "@material-ui/styles"
-import parse from 'html-react-parser';
 
-import CircularLoader from '../lib/components/CircularLoader';
+import ProjectTags from '../lib/components/ProjectTags';
 import GreyContainer from '../lib/components/GreyContainer';
 
 const useStyles = makeStyles({
@@ -32,6 +32,17 @@ const useStyles = makeStyles({
 		maxWidth: '100%',
 		maxHeight: '100%',
 		objectPosition: 'top'
+	},
+	projectTagContainer: {
+		marginTop: "40px",
+		alignItems: "flex-start",
+    gap: "20px"
+	},
+	titleGrid: {
+		display: "flex",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: "16px"
 	}
 });
 
@@ -62,15 +73,29 @@ const Projects = (props) => {
 									className={classes.projectImage}
 								/>
 								<CardContent>
-									<Typography gutterBottom variant="h5" component="div">
-										{item.attributes.projectTitle}
-									</Typography>
+									<Grid className={classes.titleGrid}>
+										<Typography gutterBottom variant="h5" component="div">
+											{item.attributes.projectTitle}
+										</Typography>
+										<Link
+											target="_blank"
+											href={item.attributes.projectGithub}
+										>
+											<GitHubIcon/>
+										</Link>
+									</Grid>
 									<Typography variant="body2" color="text.secondary">
 										{item.attributes.projectDescription}
 									</Typography>
-									<Typography component={'span'} variant={'body2'}>
-										{parse(item.attributes.projectTags)}
-									</Typography>
+									<Grid container className={classes.projectTagContainer}>
+										{item.attributes.projectTags.name.map((tag, index) => (
+											<ProjectTags
+												className={classes.gridItem}
+												key={index}
+												label={tag}
+											/>
+										))}
+									</Grid>
 								</CardContent>
 							</GreyContainer>
 						</Grid>
