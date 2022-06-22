@@ -22,7 +22,6 @@ const useStyles = makeStyles({
 	gridTitle: {
 		display: 'flex',
 		justifyContent: 'center',
-		padding: '0 0 60px'
 	},
 	gridItems: {
 		display: 'flex',
@@ -49,8 +48,7 @@ const Projects = (props) => {
 				</Typography>
 				</Grid>
 				<Grid
-					className={classes.gridItems}
-					
+					 className={classes.gridContainer}
 					container
 				>
 					{props.projectData.map((item, index) => (
