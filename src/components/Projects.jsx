@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography, CardMedia, CardContent, Link } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageIcon from '@mui/icons-material/Language';
 import { makeStyles } from "@material-ui/styles"
 
 import ProjectTags from '../lib/components/ProjectTags';
@@ -77,12 +78,19 @@ const Projects = (props) => {
 										<Typography gutterBottom variant="h5" component="div">
 											{item.attributes.projectTitle}
 										</Typography>
-										<Link
-											target="_blank"
-											href={item.attributes.projectGithub}
-										>
-											<GitHubIcon/>
-										</Link>
+										<Grid item>
+											<Link
+												target="_blank"
+												href={item.attributes.projectGithub}
+											>
+												<GitHubIcon
+													style={{ color:'black' }}
+												/>
+												<LanguageIcon
+													style={{ color:'black' }}
+												/>
+											</Link>
+										</Grid>
 									</Grid>
 									<Typography variant="body2" color="text.secondary">
 										{item.attributes.projectDescription}
