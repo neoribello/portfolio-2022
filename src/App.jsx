@@ -12,6 +12,7 @@ import Hero from './components/Hero';
 import Introduction from './components/Introduction';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Footer from './components/Footer';
 
 const useStyles = makeStyles({
   boxContainer: {
@@ -26,6 +27,7 @@ function App() {
   const [introductionData, setIntroductionData] = useState([])
   const [skillsetData, setSkillsetData] = useState([])
   const [projectData, setprojectData] = useState([])
+  const [footerData, setfooterData] = useState([])
   const [err, setErr] = useState('');
   const [loading, setLoading] = useState(true);
  
@@ -35,11 +37,13 @@ function App() {
       const introductionUrl = 'http://localhost:1338/api/introductions'
       const skillsetUrl = 'http://localhost:1338/api/skillsets?populate=*'
       const projectUrl = 'http://localhost:1338/api/proejcts?populate=*'
+      const footerUrl = 'http://localhost:1338/api/footers?populate=*'
 
       const getSkillset = axios.get(skillsetUrl)
       const getHero = axios.get(heroUrl)
       const getIntroduction = axios.get(introductionUrl)
       const getprojectUrl = axios.get(projectUrl)
+      const getfooterUrl = axios.get(footerUrl)
 
       axios.all([getHero, getIntroduction, getSkillset, getprojectUrl])
         .then(
@@ -48,6 +52,7 @@ function App() {
             setIntroductionData(allData[1].data.data[0].attributes)
             setSkillsetData(allData[2].data.data)
             setprojectData(allData[3].data.data)
+            setfooterData(allData.data.data)
           })
         )
         .catch(err => {
@@ -65,29 +70,31 @@ function App() {
     <>
     <PortfolioTheme>
       <Navbar/>
-      <Box className={classes.boxContainer}>
-        <Hero
-          heroData={heroData}
-          isError={err}
-          isLoading={loading}
-        />
-        <Introduction
-          introductionData={introductionData}
-          isError={err}
-          isLoading={loading}
-        />
-        <Skills
-          skillsetData={skillsetData}
-          isError={err}
-          isLoading={loading}
-        />
-        <Projects
-          projectData={projectData}
-          isError={err}
-          isLoading={loading}
-        />
-
-      </Box>
+        <Box className={classes.boxContainer}>
+          <Hero
+            heroData={heroData}
+            isError={err}
+            isLoading={loading}
+          />
+          <Introduction
+            introductionData={introductionData}
+            isError={err}
+            isLoading={loading}
+          />
+          <Skills
+            skillsetData={skillsetData}
+            isError={err}
+            isLoading={loading}
+          />
+          <Projects
+            projectData={projectData}
+            isError={err}
+            isLoading={loading}
+          />
+        </Box>
+      <Footer
+        footerData={footerData}
+      />
     </PortfolioTheme>
     </>
   );

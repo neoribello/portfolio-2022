@@ -28,7 +28,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            NEIL
           </Typography>
           <Typography
             variant="h5"
