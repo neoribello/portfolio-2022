@@ -40,21 +40,24 @@ function Footer(props) {
 				<Grid className={classes.linkContainer}>
 					<Grid item xs={3.5} sm={3.5} md={3.5} lg={3.5}>
 						<Link
-							// href={props.footerData.footerLinks.github}
+							target="_blank"
+							href="https://github.com/neoribello"
 						>
 							<GitHubIcon style={{ color:'black' }}/>
 						</Link>
 					</Grid>
 					<Grid item xs={3.5} sm={3.5} md={3.5} lg={3.5}>
 						<Link
-							// href={props.footerData.footerLinks.linkedin}
+							target="_blank"
+							href="https://www.linkedin.com/in/neil-oribello-65a724139/"
 						>
 							<LinkedInIcon style={{ color:'black' }}/>
 						</Link>
 					</Grid>
 					<Grid item xs={3.5} sm={3.5} md={3.5} lg={3.5}>
 						<Link
-							// href={props.footerData.footerLinks.resume}
+							target="_blank"
+							href="https://www.pdf.investintech.com/preview-frames.php?id=WGMxUkVjRVMxVTZqTTBFZ25yOFhwbEY0SWZDNmlCbERtZE1xVGRSWkdlZnNndmI1WWM5aUJqVnVaWTU1MmpraWJmSFRpV1BOQ0twTDFPSGpOV2xnZGh1YmdkK0xuaEMrTFZiUm90Si9PNXNuZE5namR1QUlTc090bWdhQzROcms="
 						>
 						<FeedIcon style={{ color:'black' }}/>
 					</Link>
