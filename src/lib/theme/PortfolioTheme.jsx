@@ -70,7 +70,7 @@ export const PORTFOLIO_THEME = createTheme({
       fontSize: "28px",
       textTransform: "uppercase",
       fontWeight: "800",
-      paddingTop: "40px"
+      paddingTop: "30px"
     },
 
     h4: {
@@ -84,6 +84,7 @@ export const PORTFOLIO_THEME = createTheme({
       color: palette.header.main,
       fontWeight: "100",
       fontSize: "18px!important",
+      paddingTop: "20px"
     },
     h6: {
       color: palette.header.main,
