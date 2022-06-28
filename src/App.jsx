@@ -37,7 +37,7 @@ function App() {
       const introductionUrl = 'http://localhost:1338/api/introductions'
       const skillsetUrl = 'http://localhost:1338/api/skillsets?populate=*'
       const projectUrl = 'http://localhost:1338/api/proejcts?populate=*'
-      const footerUrl = 'http://localhost:1338/api/footers?populate=*'
+      const footerUrl = 'http://localhost:1338/api/footers'
 
       const getSkillset = axios.get(skillsetUrl)
       const getHero = axios.get(heroUrl)
@@ -45,14 +45,14 @@ function App() {
       const getprojectUrl = axios.get(projectUrl)
       const getfooterUrl = axios.get(footerUrl)
 
-      axios.all([getHero, getIntroduction, getSkillset, getprojectUrl])
+      axios.all([getHero, getIntroduction, getSkillset, getprojectUrl, getfooterUrl])
         .then(
           axios.spread((...allData) => {
             setHeroData(allData[0].data.data[0].attributes)
             setIntroductionData(allData[1].data.data[0].attributes)
             setSkillsetData(allData[2].data.data)
             setprojectData(allData[3].data.data)
-            setfooterData(allData.data.data)
+            setfooterData(allData[4].data.data[0].attributes)
           })
         )
         .catch(err => {
@@ -94,6 +94,8 @@ function App() {
         </Box>
       <Footer
         footerData={footerData}
+        isError={err}
+        isLoading={loading}
       />
     </PortfolioTheme>
     </>

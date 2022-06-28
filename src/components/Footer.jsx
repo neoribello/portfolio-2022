@@ -1,7 +1,9 @@
 import React from 'react';
-import { Grid, Typography, TextField, Button } from '@mui/material';
+import { Grid, Typography, Link } from '@mui/material';
 import { makeStyles } from "@material-ui/styles"
-import CircularLoader from '../lib/components/CircularLoader';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FeedIcon from '@mui/icons-material/Feed';
 
 const useStyles = makeStyles({
 		gridContainer: {
@@ -10,8 +12,16 @@ const useStyles = makeStyles({
 			justifyContent: 'center',
 			alignItems: 'center',
 			background: '#F5F5F5',
-			flexDirection: 'column !important'
-		}
+			flexDirection: 'column !important',
+			padding: '60px'
+		},
+		linkContainer: {
+			width: '400px',
+			display: 'flex',
+			justifyContent: 'space-around',
+			alignItems: 'center',
+			paddingTop: '30px'
+		},
   });
 
   
@@ -22,11 +32,34 @@ function Footer(props) {
 		<>
 			<Grid className={classes.gridContainer}>
 				<Typography variant="h3">
-					Get in touch
+					{props.footerData.footerTitle}
 				</Typography>
 				<Typography variant="h5">
-					Want to work tougether or have any questions?
+					{props.footerData.footerSubheader}
 				</Typography>
+				<Grid className={classes.linkContainer}>
+					<Grid item xs={3.5} sm={3.5} md={3.5} lg={3.5}>
+						<Link
+							// href={props.footerData.footerLinks.github}
+						>
+							<GitHubIcon style={{ color:'black' }}/>
+						</Link>
+					</Grid>
+					<Grid item xs={3.5} sm={3.5} md={3.5} lg={3.5}>
+						<Link
+							// href={props.footerData.footerLinks.linkedin}
+						>
+							<LinkedInIcon style={{ color:'black' }}/>
+						</Link>
+					</Grid>
+					<Grid item xs={3.5} sm={3.5} md={3.5} lg={3.5}>
+						<Link
+							// href={props.footerData.footerLinks.resume}
+						>
+						<FeedIcon style={{ color:'black' }}/>
+					</Link>
+					</Grid>
+				</Grid>
 			</Grid>
 		</>
 	);
